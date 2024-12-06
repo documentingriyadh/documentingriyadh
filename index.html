@@ -50,7 +50,6 @@
                 fillOpacity: 1
               });
             }
-            highlightLayer.openPopup();
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
@@ -103,13 +102,6 @@
                             e.target._eventParents[i].resetStyle(e.target);
                         }
                     }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
                 },
                 mouseover: highlightFeature,
             });
@@ -129,7 +121,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(219,219,219,1.0)',
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_RiyadhBuildings_0');
@@ -137,7 +129,7 @@
         map.getPane('pane_RiyadhBuildings_0').style['mix-blend-mode'] = 'normal';
         var layer_RiyadhBuildings_0 = new L.geoJson(json_RiyadhBuildings_0, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_RiyadhBuildings_0',
             layerName: 'layer_RiyadhBuildings_0',
             pane: 'pane_RiyadhBuildings_0',
@@ -154,13 +146,6 @@
                             e.target._eventParents[i].resetStyle(e.target);
                         }
                     }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
                 },
                 mouseover: highlightFeature,
             });
@@ -174,8 +159,7 @@
                         <td>' + (feature.properties['OBJ'] !== null ? autolinker.link(feature.properties['OBJ'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Notes</th>\
-                        <td>' + (feature.properties['Notes'] !== null ? autolinker.link(feature.properties['Notes'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Notes'] !== null ? autolinker.link(feature.properties['Notes'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
