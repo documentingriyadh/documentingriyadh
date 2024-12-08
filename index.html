@@ -35,7 +35,7 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="data/Photos_1.js"></script>
+        <script src="data/DocumentingRiyadhDataRiyadh_1.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -99,7 +99,7 @@
         map.getPane('pane_GoogleMaps_0').style.zIndex = 400;
         var layer_GoogleMaps_0 = L.tileLayer('https://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
             pane: 'pane_GoogleMaps_0',
-            opacity: 0.5,
+            opacity: 1.0,
             attribution: '',
             minZoom: 1,
             maxZoom: 28,
@@ -108,7 +108,7 @@
         });
         layer_GoogleMaps_0;
         map.addLayer(layer_GoogleMaps_0);
-        function pop_Photos_1(feature, layer) {
+        function pop_DocumentingRiyadhDataRiyadh_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -121,15 +121,32 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">photo</th>\
-                        <td>' + (feature.properties['photo'] !== null ? autolinker.link(feature.properties['photo'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Name</th>\
+                        <td class="visible-with-data" id="Name">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">OBJ</th>\
-                        <td>' + (feature.properties['OBJ'] !== null ? autolinker.link(feature.properties['OBJ'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Type</th>\
+                        <td class="visible-with-data" id="Type">' + (feature.properties['Type'] !== null ? autolinker.link(feature.properties['Type'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Notes'] !== null ? autolinker.link(feature.properties['Notes'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Media Type</th>\
+                        <td class="visible-with-data" id="Media Type">' + (feature.properties['Media Type'] !== null ? autolinker.link(feature.properties['Media Type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Date</th>\
+                        <td class="visible-with-data" id="Date">' + (feature.properties['Date'] !== null ? autolinker.link(feature.properties['Date'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Link to Re</th>\
+                        <td class="visible-with-data" id="Link to Re">' + (feature.properties['Link to Re'] !== null ? autolinker.link(feature.properties['Link to Re'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Contributo</th>\
+                        <td class="visible-with-data" id="Contributo">' + (feature.properties['Contributo'] !== null ? autolinker.link(feature.properties['Contributo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Contribu_1</th>\
+                        <td class="visible-with-data" id="Contribu_1">' + (feature.properties['Contribu_1'] !== null ? autolinker.link(feature.properties['Contribu_1'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -139,9 +156,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Photos_1_0() {
+        function style_DocumentingRiyadhDataRiyadh_1_0() {
             return {
-                pane: 'pane_Photos_1',
+                pane: 'pane_DocumentingRiyadhDataRiyadh_1',
                 radius: 10.0,
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
@@ -155,26 +172,26 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Photos_1');
-        map.getPane('pane_Photos_1').style.zIndex = 401;
-        map.getPane('pane_Photos_1').style['mix-blend-mode'] = 'normal';
-        var layer_Photos_1 = new L.geoJson(json_Photos_1, {
+        map.createPane('pane_DocumentingRiyadhDataRiyadh_1');
+        map.getPane('pane_DocumentingRiyadhDataRiyadh_1').style.zIndex = 401;
+        map.getPane('pane_DocumentingRiyadhDataRiyadh_1').style['mix-blend-mode'] = 'normal';
+        var layer_DocumentingRiyadhDataRiyadh_1 = new L.geoJson(json_DocumentingRiyadhDataRiyadh_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Photos_1',
-            layerName: 'layer_Photos_1',
-            pane: 'pane_Photos_1',
-            onEachFeature: pop_Photos_1,
+            dataVar: 'json_DocumentingRiyadhDataRiyadh_1',
+            layerName: 'layer_DocumentingRiyadhDataRiyadh_1',
+            pane: 'pane_DocumentingRiyadhDataRiyadh_1',
+            onEachFeature: pop_DocumentingRiyadhDataRiyadh_1,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Photos_1_0(feature));
+                return L.circleMarker(latlng, style_DocumentingRiyadhDataRiyadh_1_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Photos_1);
-        map.addLayer(layer_Photos_1);
+        bounds_group.addLayer(layer_DocumentingRiyadhDataRiyadh_1);
+        map.addLayer(layer_DocumentingRiyadhDataRiyadh_1);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
