@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/MarkerCluster.css">
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         html, body, #map {
@@ -35,6 +37,7 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
         <script src="data/DocumentingRiyadhDataRiyadh_1.js"></script>
         <script>
         var highlightLayer;
@@ -125,24 +128,19 @@
                         <td class="visible-with-data" id="Name">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Type</th>\
-                        <td class="visible-with-data" id="Type">' + (feature.properties['Type'] !== null ? autolinker.link(feature.properties['Type'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Type 3</th>\
+                        <td class="visible-with-data" id="Type 3">' + (feature.properties['Type 3'] !== null ? autolinker.link(feature.properties['Type 3'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Media Type</th>\
                         <td class="visible-with-data" id="Media Type">' + (feature.properties['Media Type'] !== null ? autolinker.link(feature.properties['Media Type'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Date</th>\
-                        <td class="visible-with-data" id="Date">' + (feature.properties['Date'] !== null ? autolinker.link(feature.properties['Date'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Link to Re</th>\
                         <td class="visible-with-data" id="Link to Re">' + (feature.properties['Link to Re'] !== null ? autolinker.link(feature.properties['Link to Re'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Contributo</th>\
-                        <td class="visible-with-data" id="Contributo">' + (feature.properties['Contributo'] !== null ? autolinker.link(feature.properties['Contributo'].toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="Contributo"colspan="2"><strong>Contributo</strong><br />' + (feature.properties['Contributo'] !== null ? autolinker.link(feature.properties['Contributo'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Contribu_1</th>\
@@ -159,16 +157,16 @@
         function style_DocumentingRiyadhDataRiyadh_1_0() {
             return {
                 pane: 'pane_DocumentingRiyadhDataRiyadh_1',
-                radius: 10.0,
+                radius: 8.0,
                 opacity: 1,
-                color: 'rgba(255,255,255,1.0)',
+                color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,68,118,1.0)',
+                fillColor: 'rgba(232,113,141,1.0)',
                 interactive: true,
             }
         }
@@ -190,8 +188,12 @@
                 return L.circleMarker(latlng, style_DocumentingRiyadhDataRiyadh_1_0(feature));
             },
         });
+        var cluster_DocumentingRiyadhDataRiyadh_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_DocumentingRiyadhDataRiyadh_1.addLayer(layer_DocumentingRiyadhDataRiyadh_1);
+
         bounds_group.addLayer(layer_DocumentingRiyadhDataRiyadh_1);
-        map.addLayer(layer_DocumentingRiyadhDataRiyadh_1);
+        cluster_DocumentingRiyadhDataRiyadh_1.addTo(map);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
